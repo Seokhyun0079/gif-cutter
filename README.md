@@ -1,69 +1,163 @@
-# React + TypeScript + Vite
+# GIF Frame Viewer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🇯🇵 日本語
 
-Currently, two official plugins are available:
+### 概要
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+GIF ファイルのフレームを個別に表示し、特定のフレームを画像として抽出できる Web アプリケーションです。
 
-## Expanding the ESLint configuration
+### 主な機能
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **GIF フレーム表示**: 各フレームを正確に表示（黒い部分の問題を解決）
+- **フィルムストリップ UI**: 映画のようなフィルムスクロール効果
+- **フレーム抽出**: 任意のフレームを PNG 画像としてダウンロード
+- **自動再生**: GIF の元のタイミングで自動再生
+- **フレームナビゲーション**: 前後フレームへの移動、スライダー操作
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 技術的特徴
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- **フレーム累積処理**: GIF の圧縮方式に対応した正確なフレーム合成
+- **透明度処理**: disposalType と transparentIndex の適切な処理
+- **リアルタイムプレビュー**: 各フレームの即座な表示
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 🇺🇸 English
+
+### Overview
+
+A web application that displays individual frames of GIF files and allows extraction of specific frames as images.
+
+### Key Features
+
+- **GIF Frame Display**: Accurate frame rendering (solves black area issues)
+- **Film Strip UI**: Cinematic film scroll effect
+- **Frame Extraction**: Download any frame as PNG image
+- **Auto Play**: Automatic playback with original GIF timing
+- **Frame Navigation**: Previous/next frame navigation, slider control
+
+### Technical Features
+
+- **Frame Accumulation Processing**: Accurate frame composition for GIF compression
+- **Transparency Handling**: Proper disposalType and transparentIndex processing
+- **Real-time Preview**: Instant display of each frame
+
+---
+
+## 🇰🇷 한국어
+
+### 개요
+
+GIF 파일의 프레임을 개별적으로 표시하고, 특정 프레임을 이미지로 추출할 수 있는 웹 애플리케이션입니다.
+
+### 주요 기능
+
+- **GIF 프레임 표시**: 각 프레임을 정확하게 표시 (검은색 부분 문제 해결)
+- **필름 스트립 UI**: 영화 같은 필름 스크롤 효과
+- **프레임 추출**: 원하는 프레임을 PNG 이미지로 다운로드
+- **자동 재생**: GIF의 원본 타이밍으로 자동 재생
+- **프레임 네비게이션**: 이전/다음 프레임 이동, 슬라이더 조작
+
+### 기술적 특징
+
+- **프레임 누적 처리**: GIF 압축 방식에 대응한 정확한 프레임 합성
+- **투명도 처리**: disposalType과 transparentIndex의 적절한 처리
+- **실시간 프리뷰**: 각 프레임의 즉시 표시
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/gif-cutter.git
+cd gif-cutter
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Build for Production
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
+npm run preview
 ```
+
+---
+
+## 🛠️ Technologies Used
+
+- **Frontend**: React 19, TypeScript
+- **GIF Processing**: gifuct-js
+- **Build Tool**: Vite
+- **Styling**: CSS3 with custom animations
+
+---
+
+## 📱 Features in Detail
+
+### Film Strip UI
+
+- **Horizontal Scrolling**: Smooth left-to-right film scroll animation
+- **Frame Thumbnails**: Miniature preview of each frame
+- **Interactive Navigation**: Click any frame to jump directly
+- **Active Frame Highlight**: Current frame highlighted with orange border
+
+### Frame Processing
+
+- **Accumulative Rendering**: Each frame builds upon previous frames
+- **Disposal Type Support**: Handles GIF disposal methods correctly
+- **Transparency Support**: Proper alpha channel processing
+- **Color Preservation**: Maintains original GIF colors accurately
+
+---
+
+## 🎯 Use Cases
+
+- **Content Creation**: Extract specific moments from GIFs
+- **Animation Analysis**: Study frame-by-frame animation
+- **Educational**: Learn about GIF structure and compression
+- **Debugging**: Troubleshoot GIF rendering issues
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- [gifuct-js](https://github.com/matt-way/gifuct-js) for GIF parsing and decompression
+- [React](https://reactjs.org/) for the UI framework
+- [Vite](https://vitejs.dev/) for the build tool
+
+---
+
+## 📞 Support
+
+If you encounter any issues or have questions, please open an issue on GitHub.
+
+**Happy GIF editing! 🎬✨**
