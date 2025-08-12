@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "build:gh-pages": "tsc -b && vite build --base=./",
+    "preview": "vite preview",
+    "deploy": "npm run build:gh-pages && git add dist && git commit -m 'Deploy to GitHub Pages' && git push"
   },
   "dependencies": {
     "gifuct-js": "^2.1.2",
