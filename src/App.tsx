@@ -255,14 +255,9 @@ function App() {
     return new ImageData(rgba, totalWidth, totalHeight);
   };
 
-  const handleFileUpload = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-
+  // GIF 처리 공통 함수
+  const processGifData = (arrayBuffer: ArrayBuffer) => {
     try {
-      const arrayBuffer = await file.arrayBuffer();
       const gif = parseGIF(arrayBuffer);
       const decompressedFrames = decompressFrames(gif, true);
 
@@ -293,6 +288,78 @@ function App() {
     } catch (error) {
       console.error("GIF parsing error:", error);
       alert("Error occurred while processing GIF file.");
+    }
+  };
+
+  const handleFileUpload = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    try {
+      const arrayBuffer = await file.arrayBuffer();
+      processGifData(arrayBuffer);
+    } catch (error) {
+      console.error("File upload error:", error);
+      alert("Error occurred while uploading file.");
+    }
+  };
+
+  const handleUrlSubmit = async () => {
+    const urlInput = document.querySelector(".url-input") as HTMLInputElement;
+    const url = urlInput?.value?.trim();
+
+    if (!url) {
+      alert("Please enter a valid GIF URL");
+      return;
+    }
+
+    try {
+      // URL 유효성 검사
+      const urlObj = new URL(url);
+      if (!urlObj.protocol.startsWith("http")) {
+        alert("Please enter a valid HTTP/HTTPS URL");
+        return;
+      }
+
+      // 로딩 상태 표시 (선택사항)
+      console.log("Loading GIF from URL:", url);
+
+      // GIF 파일 다운로드
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("image/gif")) {
+        alert("The URL does not point to a valid GIF file");
+        return;
+      }
+
+      const arrayBuffer = await response.arrayBuffer();
+      processGifData(arrayBuffer);
+
+      // 성공 메시지
+      console.log("GIF loaded successfully from URL");
+    } catch (error) {
+      console.error("URL loading error:", error);
+      if (error instanceof TypeError && error.message.includes("Invalid URL")) {
+        alert("Please enter a valid URL");
+      } else if (
+        error instanceof Error &&
+        error.message.includes("HTTP error")
+      ) {
+        alert(
+          "Failed to load GIF from URL. Please check if the URL is accessible."
+        );
+      } else {
+        alert(
+          "Error occurred while loading GIF from URL. Please check the URL and try again."
+        );
+      }
     }
   };
 
@@ -366,6 +433,32 @@ function App() {
   return (
     <div className="app">
       <h1>GIF Frame Viewer</h1>
+      <div className="url-input-container">
+        <input
+          type="url"
+          placeholder="Enter GIF URL"
+          className="url-input"
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              handleUrlSubmit();
+            }
+          }}
+        />
+        <button className="url-submit-btn" onClick={handleUrlSubmit}>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
+      </div>
 
       <div className="upload-section">
         <input

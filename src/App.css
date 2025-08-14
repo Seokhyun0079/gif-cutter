@@ -18,6 +18,65 @@
   margin-bottom: 1rem;
 }
 
+.url-input-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 1rem;
+}
+
+.url-input {
+  flex: 1;
+  padding: 16px 20px;
+  border: 2px solid #e1e5e9;
+  border-radius: 12px;
+  font-size: 16px;
+  background: #ffffff;
+  color: #333;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.url-input:focus {
+  outline: none;
+  border-color: #646cff;
+  box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.url-input::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.url-submit-btn {
+  background: #646cff;
+  color: white;
+  border: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(100, 108, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.url-submit-btn:hover {
+  background: #535bf2;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(100, 108, 255, 0.3);
+}
+
+.url-submit-btn:active {
+  transform: scale(0.95);
+}
+
 .upload-section {
   display: flex;
   flex-direction: column;
