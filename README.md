@@ -66,6 +66,23 @@ GIF 파일의 프레임을 개별적으로 표시하고, 특정 프레임을 이
 
 ---
 
+## 🌐 데모 페이지
+
+### Live Demo
+
+**🔗 [GIF Cutter 데모 페이지](https://seokhyun0079.github.io/gif-cutter/)**
+
+실제로 GIF 파일을 업로드하고 프레임을 확인해보세요!
+
+### 데모 페이지 특징
+
+- **즉시 사용 가능**: 별도 설치 없이 웹 브라우저에서 바로 사용
+- **실시간 테스트**: 다양한 GIF 파일로 기능 테스트
+- **모바일 지원**: 모바일 기기에서도 최적화된 사용자 경험
+- **무료 사용**: 완전히 무료로 모든 기능 이용 가능
+
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -105,7 +122,43 @@ npm run preview
 
 ---
 
+## 🌐 Demo Page
+
+### Live Demo
+
+**🔗 [GIF Cutter Demo Page](https://seokhyun0079.github.io/gif-cutter/)**
+
+Try uploading GIF files and exploring frames right now!
+
+### Demo Page Features
+
+- **Ready to Use**: No installation required, use directly in your web browser
+- **Real-time Testing**: Test functionality with various GIF files
+- **Mobile Optimized**: Optimized user experience on mobile devices
+- **Completely Free**: All features available at no cost
+
+---
+
 ## 📱 Features in Detail
+
+---
+
+## 🌐 デモページ
+
+### ライブデモ
+
+**🔗 [GIF Cutter デモページ](https://seokhyun0079.github.io/gif-cutter/)**
+
+実際に GIF ファイルをアップロードしてフレームを確認してみてください！
+
+### デモページの特徴
+
+- **すぐに使用可能**: インストール不要でウェブブラウザからすぐに使用
+- **リアルタイムテスト**: 様々な GIF ファイルで機能をテスト
+- **モバイル対応**: モバイルデバイスでも最適化されたユーザー体験
+- **完全無料**: すべての機能を無料で利用可能
+
+---
 
 ### Film Strip UI
 
